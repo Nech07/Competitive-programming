@@ -1,0 +1,58 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#include <string.h>
+#include <string>
+#include <set>
+#include <ctype.h>
+#include <algorithm>
+#include <vector>
+#include <map>
+#include <math.h>
+#define ll long long
+using namespace std;
+
+
+// create an array for all the letters, if there's more than one odd than it can't be palindrome, then first print half of the even frequencies letters then the odd and at 
+// the end the other hald of the even
+
+
+
+// important x&1 returns 1 if it's odd, since it means and
+// for even you can do !(x&1) or x&1^1, the second case is with xor and you don't need the parentheis
+
+int main(){
+	cin.tie(0);
+	ios::sync_with_stdio(0);
+	string s; cin >>s;int arr[26]={0},c1;
+	for(char c: s){
+		++arr[c-'A'];
+	}
+	for(int i=0; i<26;i++){
+		c1+=arr[i]&1;
+	}
+	if(c1>1){
+		cout << "NO SOLUTION";
+		return 0;
+	}
+	string t;
+	for(int i=0;i<26;i++){
+		if(!(arr[i]&1)){
+			for(int j=0; j<arr[i]/2;j++){
+				t+=(char) ('A'+i);
+			}
+		}
+	}
+	cout << t;
+	for(int i=0; i<26;i++){
+		if(arr[i]&1){
+			for(int j=0;j<arr[i];j++){
+				cout << (char)('A'+i);
+			}
+		}
+	}
+	reverse(t.begin(),t.end());
+	cout <<t;
+
+	
+
+}
