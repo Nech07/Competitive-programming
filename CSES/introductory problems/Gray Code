@@ -1,0 +1,42 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#include <string.h>
+#include <string>
+#include <set>
+#include <ctype.h>
+#include <algorithm>
+#include <vector>
+#include <map>
+#include <math.h>
+#define ll long long
+using namespace std;
+
+
+//vector of strings and i iterate many times to modify the strings and add more elements
+// i start with 0,1 => 0,1,1,0 => 00,01,11,10 =>00,01,11,10,10,11,01,00 => 000,001,011,010,110,111,101,100
+
+
+
+int main(){
+	cin.tie(0);
+	ios::sync_with_stdio(0);
+	int n,i,j; cin >>n;
+	vector <string> ans={"0","1"};
+	for(i=2;i<(1<<n);i=i<<1){
+		for(j=i-1;j>=0;j--){
+			ans.push_back(ans[j]);
+		}
+		for(j=0;j<i;j++){
+			ans[j]="0"+ans[j];
+		}
+		for(j=i;j<2*i;j++){
+			ans[j]="1"+ans[j];
+		}
+	}
+	for(string s: ans){
+		cout << s<< endl;
+	}
+
+	
+
+}
