@@ -1,0 +1,39 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#include <string.h>
+#include <string>
+#include <set>
+#include <ctype.h>
+#include <algorithm>
+#include <vector>
+#include <map>
+#include <math.h>
+#define ll long long
+using namespace std;
+
+
+int main(){
+	cin.tie(0);
+	ios::sync_with_stdio(0);
+	int t; cin >>t;
+	while(t--){
+		map<int,int> a;
+		for(int i=0;i<4;i++){
+			int b;
+			cin >>b;
+			a[b]++;
+		}
+		if(a.size()>=3){
+			cout << 2 << "\n";
+		}
+		else if(a.begin()->second==2){
+			cout << 2 <<"\n";
+		}
+		else if (a.begin()->second==3 || a.begin()->second ==1){
+			cout << 1 << "\n";
+		}
+		else{
+			cout << 0 << "\n";
+		}
+	}
+}
