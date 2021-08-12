@@ -1,0 +1,41 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#include <string.h>
+#include <string>
+#include <set>
+#include <ctype.h>
+#include <algorithm>
+#include <vector>
+#include <map>
+#include <math.h>
+#define ll long long
+using namespace std;
+
+//at first i tried directly by creating an array of size n, having so an one-one correspontion, but id gave me memory error, too large,
+//but then since i only have to add number for which %!+0, i start from the grates, and i divide by greatest common divisor  and multiply by current lcm
+
+
+int main(){
+	cin.tie(0);
+	ios::sync_with_stdio(0);
+	int t; cin>>t;
+	while(t--){
+		ll n,m; cin>>n>>m;
+		ll a,b;
+		vector<pair<int,int>> set;
+		for(int i=0;i<m;i++){
+			cin >>a>>b;
+			set.push_back({a,b});
+		}
+		sort(set.begin(),set.end(),greater<pair<int,int>>());
+		ll lcm=1,rem=n,ans=0;
+		for(int i=0;i<m && rem>0;i++){
+			ll x=set[i].first,y=set[i].second;
+			lcm=lcm*y/__gcd(lcm,y);
+			ans=ans+(rem-n/lcm)*x;
+			rem=n/lcm;
+		}
+		cout << ans<< "\n";
+	}	
+}
+
