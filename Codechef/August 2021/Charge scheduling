@@ -1,0 +1,73 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#include <string.h>
+#include <string>
+#include <set>
+#include <ctype.h>
+#include <algorithm>
+#include <vector>
+#include <map>
+#include <math.h>
+#define ll long long
+using namespace std;
+
+
+
+struct schedule{
+	ll out,duration,id;
+	bool operator<(schedule o) const{
+		return out<o.out;
+	}
+
+};
+
+int main(){
+	cin.tie(0);
+	ios::sync_with_stdio(0);
+	ll q; cin>>q;
+	while(q--){
+		ll n,t; cin>>n;
+		vector<schedule> s;
+		for(int i=0;i<n;i++){
+			s.push_back(schedule());
+			cin>>t;
+			s[i].duration=t;s[i].id=i+1;
+		}
+		auto it=s.begin();
+		while(it!=s.end()){
+			cin>>t;
+			if(t<it->duration){
+				it=s.erase(it);
+			}
+			else{
+				it->out=t;
+				++it;
+			}
+		}
+		sort(s.begin(),s.end());
+		set<pair<int,int>>s2;
+		vector<pair<int,int>>schedules;
+		for(ll i=s.size()-1;i>=0;i--){
+			t=s[i].out-(i?s[i-1].out :0);
+			s2.insert(make_pair(s[i].duration,s[i].id));
+			while(t && !s2.empty()){
+				auto l=s2.begin();
+				if(l->first<=t){
+					t-=l->first;
+					schedules.push_back({l->first,l->second});
+				}
+				else{
+					s2.insert(make_pair(l->first-t,l->second));
+					t=0;
+				}
+				s2.erase(l);
+			}
+		}
+		cout<<schedules.size()<< "\n";ll sum=0;
+		for(auto is=schedules.begin();is!=schedules.end();is++){
+			cout<< is->second<< " "<< sum << " "<<sum+is->first << "\n";
+			sum+=is->first;
+		}
+	}
+}
+
