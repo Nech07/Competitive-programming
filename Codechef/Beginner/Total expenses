@@ -1,0 +1,62 @@
+#include <bits/stdc++.h>
+#include <numeric>
+#pragma GCC optimize ("03")
+#pragma GCC target ("sse4")
+#include <math.h>
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef complex<ld> cd;
+
+typedef pair<int,int> pi;
+typedef pair<ll,ll> pl;
+typedef pair<ld,ld> pd;
+
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<cd> vcd;
+
+#define FOR(i,a,b) for(int i=a;i<b;i++)
+#define F0R(i,a) for(int i=0;i<a;i++)
+#define FORd(i,a,b) for(int i=b-1;i>=a;i--)
+#define F0Rd(i,a) for(int i=a-1;i>=0;i--)
+#define trav(a,x) for(auto& a :x)
+
+#define sz(x) (int)(x).size()
+#define mp make_pair
+#define pb push_back
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+#define all(x) x.begin(),x.end()
+#define ins insert
+#define nl "\n"
+
+
+void solve(){
+	double q,p;cin>>q>>p;
+	double ans=p*q;
+	if(q>1000){
+		printf("%.6f\n",ans-0.1*ans);
+	}
+	else{
+		printf("%.6f\n",ans);
+	}
+
+}
+
+
+
+
+int main(){
+	int t; cin>>t;
+	while(t--){
+		solve();
+	}
+
+}
+
