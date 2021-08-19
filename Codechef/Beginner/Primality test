@@ -47,6 +47,9 @@ typedef vector<cd> vcd;
 
 void solve(){
 	ll n; cin>>n;
+	if (n==1||n==2){
+		cout << "yes\n";return;
+	}
 	FOR(i,2,sqrt(n)+1){
 		if(n%i==0){
 			cout << "no\n";return;
