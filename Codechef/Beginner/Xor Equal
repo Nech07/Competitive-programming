@@ -1,0 +1,92 @@
+#include <bits/stdc++.h>
+#include <numeric>
+#pragma GCC optimize("03")
+#pragma GCC target("sse4")
+#include <math.h>
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef complex<ld> cd;
+
+typedef pair<int, int> pi;
+typedef pair<ll, ll> pl;
+typedef pair<ld, ld> pd;
+
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<cd> vcd;
+
+#define FOR(i, a, b) for (int i = a; i < b; i++)
+#define F0R(i, a) for (int i = 0; i < a; i++)
+#define FORd(i, a, b) for (int i = b - 1; i >= a; i--)
+#define F0Rd(i, a) for (int i = a - 1; i >= 0; i--)
+#define trav(a, x) for (auto &a : x)
+
+#define sz(x) (int)(x).size()
+#define mp make_pair
+#define pb push_back
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+#define all(x) x.begin(), x.end()
+#define ins insert
+#define nl "\n"
+
+template<class T> bool ckmin(T& a, const T& b) { return b < a ? a = b, 1 : 0; }
+template<class T> bool ckmax(T& a, const T& b) { return a < b ? a = b, 1 : 0; }
+// xor is commutative and associative
+
+void solve(){
+	map<ll,ll> a,b; ll n,x; cin>>n>>x;
+	F0R(i,n){
+		ll d; cin>>d;
+		a[d]++;
+		b[d]=1;
+	}ll ans=-1,change=0;
+	if(n==1 ){
+		cout << 1 << " " << 0 <<nl;
+		return;
+	}
+	trav(i,a){
+		if (i.s ==n){
+			ans=n;break;
+		}
+		if(i.s>= ans){
+			ans=i.s;	
+		}
+	}
+	if(x==0){
+		cout << ans << " "<< change<<nl;return;
+	}
+	trav(i,a){
+		if(b[(i.f)^x]==1){
+			if(i.s+a[(i.f)^x]> ans) {
+				ans= i.s+ a[(i.f)^x];
+				change=min(i.s,a[(i.f)^x]);
+			}
+			else if (i.s+a[(i.f)^x]==ans){
+				if(min(i.s,a[(i.f)^x])<change){
+					ans=i.s+a[(i.f)^x];
+					change = min(i.s, a[(i.f)^x]);
+				}
+			}
+		}
+	}
+	cout << ans<< " "<< change<<nl;
+}
+
+
+
+int main(){
+	cin.tie(0);
+	ios::sync_with_stdio(0);
+	ll t=1;cin >>t;
+	while(t--){
+	solve();
+	}
+}
