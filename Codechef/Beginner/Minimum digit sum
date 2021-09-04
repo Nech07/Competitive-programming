@@ -1,0 +1,99 @@
+#include <bits/stdc++.h>
+#include <numeric>
+#pragma GCC optimize("03")
+#pragma GCC target("sse4")
+#include <math.h>
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef complex<ld> cd;
+
+typedef pair<int, int> pi;
+typedef pair<ll, ll> pl;
+typedef pair<ld, ld> pd;
+
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<cd> vcd;
+
+#define FOR(i, a, b) for (int i = a; i < b; i++)
+#define F0R(i, a) for (int i = 0; i < a; i++)
+#define FORd(i, a, b) for (int i = b - 1; i >= a; i--)
+#define F0Rd(i, a) for (int i = a - 1; i >= 0; i--)
+#define trav(a, x) for (auto &a : x)
+
+#define sz(x) (int)(x).size()
+#define mp make_pair
+#define pb push_back
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+#define all(x) x.begin(), x.end()
+#define ins insert
+#define nl "\n"
+
+template<class T> bool ckmin(T& a, const T& b) { return b < a ? a = b, 1 : 0; }
+template<class T> bool ckmax(T& a, const T& b) { return a < b ? a = b, 1 : 0; }
+
+
+
+ll base(ll n, ll a,ll b){
+	ll ans=0;
+	while(n){
+		ans+=n%a;
+		n/=a;
+		if(ans>=b){
+			return -1;
+		}
+	}
+	return ans;
+}
+
+void solve(){
+	ll n,l,r; cin>>n>>l>>r;
+	if(l<= n && r>= n){
+		cout << n<<nl; return;
+	}
+	if(r>= n && l>= n){
+		cout << r<<nl;return;
+	}
+	ll minimum=10e9;ll b=log(n),ans;
+	FOR(i,l,r+1){
+		double a=b/log(i);
+		if(a==(ll) a){
+			cout << i<<nl;return;
+		}
+		else{
+			ll c=base(n,i,minimum);
+			if(c==-1){
+				continue;
+			}
+			if(c<minimum){
+				minimum=c;ans=i;
+			}
+			if(minimum==1){
+				break;
+			}
+		}
+	}
+	cout << ans <<nl;
+	
+
+
+}
+
+
+
+int main(){
+	cin.tie(0);
+	ios::sync_with_stdio(0);
+	ll t=1;cin >>t;
+	while(t--){
+	solve();
+	}
+}
