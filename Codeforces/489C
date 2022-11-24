@@ -1,0 +1,92 @@
+#include <bits/stdc++.h>
+#include <numeric>
+#pragma GCC optimize("03")
+#pragma GCC target("sse4")
+#include <math.h>
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef complex<ld> cd;
+typedef pair<int, int> pi;
+typedef pair<ll, ll> pl;
+typedef pair<ld, ld> pd;
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<cd> vcd;
+#define trav(a, x) for (auto &a : x)
+#define sz(x) (int)(x).size()
+#define mp make_pair
+#define pb push_back
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+#define all(x) x.begin(), x.end()
+#define ins insert
+#define nl "\n"
+
+bool can(int m,int s){
+	return s>=0 && s<=9*m;
+}
+
+
+void solve(){
+	int m,s;
+	cin >>m>>s;int t=s;
+	string maxi="",mini="";
+	int i=0;int j=9;
+	int needed=s/9;
+	if(s%9!=0){
+		needed++;
+	}
+	if((s==0 && m>1) || needed>m){
+		cout<< "-1 -1" <<nl;
+		return;
+	}
+	while(i<m){
+		if(t-j>=0){
+			maxi=maxi+to_string(j);
+			i++;
+			t-=j;
+		}
+		else{
+			j--;
+		}
+	}
+	for(i=0; i<m; i++){
+		for(int d=0; d<10; d++){
+			if((i>0||d>0 ||(m==1 &&d==0)) && can(m-i-1,s-d)){
+				mini+=char('0'+d);
+				s-=d;
+				break;
+			}
+		}
+	}
+	cout << mini<< " " <<maxi<<nl;
+
+
+
+
+
+
+}
+
+
+
+int main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int t=1;
+	//cin>>t;
+	while(t--){
+		solve();
+	}
+}
+
+
+
+
