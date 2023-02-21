@@ -1,0 +1,57 @@
+#include <bits/stdc++.h>
+#include <numeric>
+#pragma GCC optimize("03")
+#pragma GCC target("sse4")
+#include <math.h>
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef complex<ld> cd;
+typedef pair<int, int> pi;
+typedef pair<ll, ll> pl;
+typedef pair<ld, ld> pd;
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<cd> vcd;
+#define trav(a, x) for (auto &a : x)
+#define sz(x) (int)(x).size()
+#define mp make_pair
+#define pb push_back
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+#define all(x) x.begin(), x.end()
+#define ins insert
+#define nl "\n"
+
+
+void solve(){
+	string s;cin >>s;
+	if(s[0]!='9'&& s[0] -'0' >=5){
+		s[0]='9'-s[0]+'0';
+	}
+	for(int i=1; i<sz(s); i++){
+		if (s[i]-'0'>=5){
+			s[i]='9'-s[i]+'0';
+		}
+	}
+	cout<< s;
+
+
+}
+
+
+int main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int t=1;
+//	cin>>t;
+	while(t--){
+		solve();
+	}
+}
