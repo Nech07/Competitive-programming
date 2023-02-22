@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+#include <numeric>
+#pragma GCC optimize("03")
+#pragma GCC target("sse4")
+#include <math.h>
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef complex<ld> cd;
+typedef pair<int, int> pi;
+typedef pair<ll, ll> pl;
+typedef pair<ld, ld> pd;
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<cd> vcd;
+#define trav(a, x) for (auto &a : x)
+#define sz(x) (int)(x).size()
+#define mp make_pair
+#define pb push_back
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+#define all(x) x.begin(), x.end()
+#define ins insert
+#define nl "\n"
+
+ll ans,a[100005];
+void solve(){
+	int n;
+	long long mx=-1e9;
+	cin >>n;
+	for(int i=1;i<=n;i++) cin >>a[i],mx=max(mx,a[i]);
+	sort(a+1,a+n+1,[](long long x,long long y){return abs(x)>abs(y);});
+	if(mx<0){
+	    cout<<a[n]*a[n-1]*a[n-2]*a[n-3]*a[n-4]<<'\n';
+		return;
+	}
+	ans=a[1]*a[2]*a[3]*a[4]*a[5];
+	for(int i=6;i<=n;i++){
+	    for(int j=1;j<=5;j++){
+	        long long tmp=a[i];
+	        for(int k=1;k<=5;k++){
+	            if(k!=j)tmp*=a[k];
+	        }
+	        ans=max(ans,tmp);
+	    }
+	}
+	cout << ans<<nl;
+
+}
+
+
+int main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int t=1;
+	cin>>t;
+	while(t--){
+		solve();
+	}
+}
