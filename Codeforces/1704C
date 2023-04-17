@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+#pragma GCC optimize("03")
+#pragma GCC target("sse4")
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef complex<ld> cd;
+typedef pair<int, int> pi;
+typedef pair<ll, ll> pl;
+typedef pair<ld, ld> pd;
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<cd> vcd;
+#define trav(a, x) for (auto &a : x)
+#define sz(x) (int)(x).size()
+#define mp make_pair
+#define pb push_back
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+#define all(x) x.begin(), x.end()
+#define ins insert
+#define nl "\n"
+#define rep(i,n) for(int i=0; i<n; i++)
+
+
+
+void solve(){
+	ll n,m; cin >>n>>m;
+	vl a(m);
+	for(int i=0; i<m; i++) cin >> a[i];
+	sort(all(a));
+	vl diff(m);
+	for(int i=0; i<m-1; i++) diff[i]=a[i+1]-a[i]-1;
+	diff[m-1]= a[0]+ n - a[m-1]-1;
+	sort(all(diff),greater<ll>());
+	ll c=0, ans=0;
+	for(int i=0; i< m; i++){
+		if( diff[i]- c* 2>0){
+			ans+=max((ll)1,diff[i]-c*2-1);
+			c+=2;
+		}
+		else{break;}
+	}
+	cout << n-ans<<nl;
+
+
+}
+
+
+
+int main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int t=1;
+	cin>>t;
+	while(t--){
+		solve();
+	}
+}
