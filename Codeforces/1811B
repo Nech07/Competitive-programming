@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+#pragma GCC optimize("03")
+#pragma GCC target("sse4")
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef complex<ld> cd;
+typedef pair<int, int> pi;
+typedef pair<ll, ll> pl;
+typedef pair<ld, ld> pd;
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<cd> vcd;
+#define trav(a, x) for (auto &a : x)
+#define sz(x) (int)(x).size()
+#define mp make_pair
+#define pb push_back
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+#define all(x) x.begin(), x.end()
+#define ins insert
+#define nl "\n"
+#define rep(i,n) for(int i=0; i<n; i++)
+
+void solve(){
+	ll n,x1,y1,x2,y2;
+	cin >>n>>x1>>y1>>x2>>y2;
+	cout <<  abs(min(min(x1,y1),min(n+1-x1,n+1-y1))-min(min(x2,y2),min(n+1-x2,n+1-y2)))<<nl;
+
+}
+
+
+int main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int t=10;
+	cin>>t;
+	while(t--){
+		solve();
+	}
+}
