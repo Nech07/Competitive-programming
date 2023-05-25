@@ -1,0 +1,77 @@
+#include <bits/stdc++.h>
+#pragma GCC optimize("03")
+#pragma GCC target("sse4")
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef complex<ld> cd;
+typedef pair<int, int> pi;
+typedef pair<ll, ll> pl;
+typedef pair<ld, ld> pd;
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<cd> vcd;
+#define trav(a, x) for (auto &a : x)
+#define sz(x) (int)(x).size()
+#define mp make_pair
+#define pb push_back
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+#define all(x) x.begin(), x.end()
+#define ins insert
+#define nl "\n"
+#define rep(i,n) for(int i=0; i<n; i++)
+
+void solve(){
+	int n,k; cin >>n>>k;
+	string s1,s2; cin >>s1>>s2;
+	vi f1(26,0),f2(26,0);
+	bool flag = true;
+	for(int i=0; i<n && flag; i++){
+		if (s1[i]!= s2[i]) flag = false;
+	}
+	if(flag) cout << "YES"<<nl;
+	else{
+		flag =true;
+		for(int i=0; i< n; i++){
+			f1[s1[i]-'a']++;
+			f2[s2[i]-'a']++;
+		}
+		for(int i=0; i<26; i++){
+			if(f1[i]!= f2[i]) flag=false;
+		}
+		if(!flag){
+			cout << "NO" <<nl;
+		}
+		else{
+			if(n >5){
+				cout << "YES"<<nl;
+			}
+			else{
+				if( (n==4 && (s1[1]!=s2[1] || s1[2]!=s2[2])) || (n==5 && s1[2]!=s2[2])|| n<=3){
+					cout << "NO"<<nl;
+				}
+				else{
+					cout << "YeS"<<nl;
+				}
+			}
+		}
+	}
+}
+
+
+int main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int t=1;
+	cin>>t;
+	while(t--){
+		solve();
+	}
+}
