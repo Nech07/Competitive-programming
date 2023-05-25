@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+#pragma GCC optimize("03")
+#pragma GCC target("sse4")
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef complex<ld> cd;
+typedef pair<int, int> pi;
+typedef pair<ll, ll> pl;
+typedef pair<ld, ld> pd;
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<cd> vcd;
+#define trav(a, x) for (auto &a : x)
+#define sz(x) (int)(x).size()
+#define mp make_pair
+#define pb push_back
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+#define all(x) x.begin(), x.end()
+#define ins insert
+#define nl "\n"
+#define rep(i,n) for(int i=0; i<n; i++)
+
+void solve(){
+	int n; cin >>n;
+	int a[2][n];
+	a[0][0]=2* n; a[1][n-1]=2* n-1;
+	for(int i=1; i<n; i++){
+		if(i&1){
+			a[0][i] = i +1;
+			a[1][i-1] = i;
+		}
+		else{
+			a[0][i]=2* n - i;
+			a[1][i-1]  =2* n-i-1;
+		}
+	}
+	for (int i=0; i<2; i++){
+		for ( int j = 0; j<n; j++){
+			cout << a[i][j] << " ";
+		}
+		cout << nl;
+	}
+
+
+}
+
+
+int main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int t=10;
+	cin>>t;
+	while(t--){
+		solve();
+	}
+}
