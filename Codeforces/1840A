@@ -1,0 +1,10 @@
+	int n; cin >>n;
+	string s,ans =""; cin>>s;
+	char a = s[0];
+	for(int i=1; i< n; i++){
+		if( s[i] ==a) {
+			ans+=a;
+			if(i!=n-1) {
+				a = s[i+1];i++;}}
+	}
+	cout << ans<<nl;
