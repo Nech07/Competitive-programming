@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+#pragma GCC optimize("03")
+#pragma GCC target("sse4")
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef complex<ld> cd;
+typedef pair<int, int> pi;
+typedef pair<ll, ll> pl;
+typedef pair<ld, ld> pd;
+typedef vector<int> vi;
+typedef vector<ld> vd;
+typedef vector<ll> vl;
+typedef vector<pi> vpi;
+typedef vector<pl> vpl;
+typedef vector<cd> vcd;
+#define trav(a, x) for (auto &a : x)
+#define sz(x) (int)(x).size()
+#define mp make_pair
+#define pb push_back
+#define f first
+#define s second
+#define lb lower_bound
+#define ub upper_bound
+#define all(x) x.begin(), x.end()
+#define ins insert
+#define nl "\n"
+#define rep(i,n) for(int i=0; i<n; i++)
+#define sp " "
+
+
+void solve(){
+	int n; cin >>n;
+	string s1; cin >>s1;
+	vi c(2,0);
+	for(int i=0; i<n; i++){
+		if(s1[i]&1)c[1]++;
+		else c[0]++;
+	}
+	if(c[0]!=c[1] || n&1){
+		cout << -1<<nl;return;
+	}
+	int i =0, j = n-1;
+	vi p;
+	while(i<=j){
+		if(s1[i]!=s1[j]){
+			i++; j--; continue;
+		}
+		else{
+			if(s1[i]=='0'){
+				p.pb(j+1);
+				s1.insert(j+1,"01");j+=2;
+			}
+			else{
+				p.pb(i);
+				s1.insert(i,"01");j+=2;
+			}
+		}
+	}
+	cout << sz(p)<<nl;
+	for(auto e: p){
+		cout << e <<" ";
+	}
+	cout <<nl;
+
+}
+
+
+int main(){
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int t=1;
+	cin>>t;
+	while(t--){
+		solve();
+	}
+}
